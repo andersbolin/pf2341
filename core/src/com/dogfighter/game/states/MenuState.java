@@ -16,7 +16,7 @@ public class MenuState extends State {
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
-        backGround = new Texture("bg.png");
+        backGround = new Texture("cavebg.png");
         playBtn = new Texture("playbtn.png");
     }
 
