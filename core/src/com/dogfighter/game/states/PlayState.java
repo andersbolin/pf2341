@@ -30,7 +30,7 @@ public class PlayState extends State {
         super(gsm);
         bird = new Bird(50,100);
         cam.setToOrtho(false, dogFighter.WIDTH / 2, dogFighter.HEIGHT / 2);
-        bg = new Texture("bg.png");
+        bg = new Texture("cavebg.png");
         ground = new Texture("ground.png");
         groundPos1 = new Vector2((cam.position.x - cam.viewportWidth / 2),GROUND_Y_OFFSET);
         groundPos2 = new Vector2((cam.position.x - cam.viewportWidth / 2) + ground.getWidth(), GROUND_Y_OFFSET);
