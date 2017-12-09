@@ -14,11 +14,13 @@ public class GameOverState extends State{
 
     private Texture backGround;
     private Texture gameOver;
+    private int restarttime = 0;
 
     public GameOverState(GameStateManager gsm) {
         super(gsm);
         backGround = new Texture("cavebg.png");
         gameOver = new Texture("gameover.png");
+
     }
 
     @Override
@@ -31,6 +33,7 @@ public class GameOverState extends State{
         handleInput();
         //cam.position.x =  bird.getPosition().x + 80;
         cam.position.set(new Vector3(dogFighter.WIDTH, dogFighter.HEIGHT, 0));
+        this.
     }
 
     @Override
@@ -42,6 +45,8 @@ public class GameOverState extends State{
         sb.end();
 
         cam.update();
+
+
     }
 
     @Override
