@@ -33,7 +33,7 @@ public class GameOverState extends State{
         handleInput();
         //cam.position.x =  bird.getPosition().x + 80;
         cam.position.set(new Vector3(dogFighter.WIDTH, dogFighter.HEIGHT, 0));
-        this.
+
     }
 
     @Override

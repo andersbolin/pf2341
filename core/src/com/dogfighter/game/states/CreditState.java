@@ -1,6 +1,8 @@
 package com.dogfighter.game.states;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.dogfighter.game.dogFighter;
 
 /**
  * Created by Anders on 2017-12-03.
@@ -8,8 +10,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class CreditState extends State {
 
+    private Texture backGround;
+    private Texture credits;
+
     public CreditState(GameStateManager gsm) {
         super(gsm);
+        backGround = new Texture("cavebg.png");
     }
 
 
@@ -25,7 +31,9 @@ public class CreditState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
-
+        sb.begin();
+        sb.draw(backGround, 0, 0 , (dogFighter.WIDTH / 2) + 80, dogFighter.HEIGHT / 2);
+        sb.end();
     }
 
     @Override
