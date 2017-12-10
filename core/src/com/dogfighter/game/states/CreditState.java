@@ -3,6 +3,7 @@ package com.dogfighter.game.states;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.dogfighter.game.dogFighter;
+import com.dogfighter.game.sprites.Fonts;
 
 /**
  * Created by Anders on 2017-12-03.
