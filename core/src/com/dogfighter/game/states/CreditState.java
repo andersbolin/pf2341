@@ -12,6 +12,7 @@ public class CreditState extends State {
 
     private Texture backGround;
     private Texture credits;
+    private Fonts font;
 
     public CreditState(GameStateManager gsm) {
         super(gsm);
