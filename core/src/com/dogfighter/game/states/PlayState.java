@@ -2,9 +2,11 @@ package com.dogfighter.game.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.dogfighter.game.Score;
 import com.dogfighter.game.dogFighter;
 import com.dogfighter.game.sprites.Bird;
 import com.dogfighter.game.sprites.Tube;
@@ -20,7 +22,10 @@ public class PlayState extends State {
     private static final int GROUND_Y_OFFSET = -30;
 
 
+    private BitmapFont bitmapfontname;
+    private String current_score;
     private Bird bird;
+    private Score score;
     private Texture bg;
     private Array<Tube> tubes;
     private Texture ground;
@@ -28,6 +33,9 @@ public class PlayState extends State {
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
+        score = new Score();
+        current_score = score.getScore();
+        bitmapfontname = new BitmapFont();
         bird = new Bird(50,100);
         cam.setToOrtho(false, dogFighter.WIDTH / 2, dogFighter.HEIGHT / 2);
         bg = new Texture("cavebg.png");
@@ -58,6 +66,12 @@ public class PlayState extends State {
             Tube tube = tubes.get(i);
             if(cam.position.x - (cam.viewportWidth / 2) > tube.getPosTopTube().x + tube.getTopTube().getWidth()){
                 tube.reposition(tube.getPosTopTube().x + ((Tube.TUBE_WIDTH + TUBE_SPACING) * TUBE_COUNT));
+                tube.setCounted(false);
+            }
+            if(bird.getPosition().x >= tube.getPosBotTube().x && tube.getCounted() == false) {
+                score.addScore();
+                current_score = score.getScore();
+                tube.setCounted(true);
             }
             if(tube.collides(bird.getBounds())){
                 gsm.set(new PlayState(gsm));
@@ -82,6 +96,8 @@ public class PlayState extends State {
         }
         sb.draw(ground, groundPos1.x,groundPos1.y);
         sb.draw(ground, groundPos2.x, groundPos2.y);
+        bitmapfontname.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+        bitmapfontname.draw(sb, current_score, bird.getPosition().x + 100, 300);
         sb.end();
     }
 

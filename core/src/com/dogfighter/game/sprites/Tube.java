@@ -20,8 +20,10 @@ public class Tube {
     private Vector2 posBotTube, posTopTube;
     private Rectangle boundsTop, boundsBot;
     private Random rand;
+    private boolean counted;
 
     public Tube(float x){
+        counted = false;
         topTube = new Texture("toptube.png");
         bottomTube = new Texture("bottomtube.png");
         rand = new Random();
@@ -42,6 +44,14 @@ public class Tube {
 
     public boolean collides(Rectangle player){
         return player.overlaps(boundsBot) || player.overlaps(boundsTop);
+    }
+
+    public void setCounted(boolean s) {
+        this.counted = s;
+    }
+
+    public boolean getCounted() {
+        return counted;
     }
 
     public static int getFLUCTUATION() {
